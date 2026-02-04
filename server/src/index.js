@@ -40,6 +40,7 @@ const limiter = rateLimit({
   max: 500, // generous limit for a small team tool
   standardHeaders: true,
   legacyHeaders: false,
+  validate: { xForwardedForHeader: false },
 });
 app.use('/api/', limiter);
 
@@ -48,6 +49,7 @@ const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 20,
   message: { message: 'Too many login attempts. Please try again later.' },
+  validate: { xForwardedForHeader: false },
 });
 
 // Body parsing

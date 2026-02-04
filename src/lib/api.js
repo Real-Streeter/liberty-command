@@ -8,9 +8,11 @@ async function request(path, options = {}) {
   });
 
   if (res.status === 401) {
-    // Clear any stale state and redirect to login
-    window.location.reload();
     throw new Error('Not authenticated');
+  }
+
+  if (res.status === 429) {
+    throw new Error('Too many requests. Please wait a moment.');
   }
 
   if (!res.ok) {

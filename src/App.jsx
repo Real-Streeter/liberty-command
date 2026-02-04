@@ -81,6 +81,18 @@ export default function App() {
 
   useEffect(() => { loadData(); }, [loadData]);
 
+  // Sensors for drag and drop (must be before any early returns)
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
   // Show login page if not authenticated
   if (!authChecked) {
     return <div className="min-h-screen bg-[#030508] flex items-center justify-center"><div className="text-zinc-500 text-sm">Loading...</div></div>;
@@ -92,18 +104,6 @@ export default function App() {
   if (loading) {
     return <div className="min-h-screen bg-[#030508] flex items-center justify-center"><div className="text-zinc-500 text-sm">Loading data...</div></div>;
   }
-
-  // Sensors for drag and drop
-  const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 8,
-      },
-    }),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  );
 
   const handleLogout = async () => {
     await api.logout();

@@ -22,7 +22,7 @@ export default function LoginPage({ onLogin }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#030508] flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#16213e] flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-10">
           <div className="w-16 h-16 bg-gradient-to-br from-zinc-700 to-zinc-900 rounded-2xl flex items-center justify-center shadow-lg shadow-black/40 border border-white/10 mx-auto mb-6">

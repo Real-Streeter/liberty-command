@@ -728,7 +728,7 @@ function Column({ column, onEditTask, onDeleteTask }) {
       </div>
 
       <SortableContext items={taskIds} strategy={verticalListSortingStrategy}>
-        <div className="flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar">
+        <div className="flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar max-h-[500px]">
           {column.tasks.map(task => (
             <TaskCard key={task.id} task={task} onEdit={onEditTask} onDelete={onDeleteTask} />
           ))}
